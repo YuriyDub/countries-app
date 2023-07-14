@@ -122,12 +122,14 @@ export const Info = (props) => {
         <InfoTitle />
         <ListGroup>
           <List>
-            <ListItem>
-              <b>Native Name:</b>{' '}
-              {Object.entries(name.nativeName).map(([_, n]) => (
-                <span key={n.common}>{n.common} </span>
-              ))}
-            </ListItem>
+            {name.nativeName ? (
+              <ListItem>
+                <b>Native Name:</b>{' '}
+                {Object.entries(name.nativeName).map(([_, n]) => (
+                  <span key={n.common}>{n.common} </span>
+                ))}
+              </ListItem>
+            ) : null}
             <ListItem>
               <b>Population:</b> {population ? population : "Don't have information"}
             </ListItem>
@@ -145,18 +147,22 @@ export const Info = (props) => {
             <ListItem>
               <b>Top Level Domain:</b> {tld[0]}
             </ListItem>
-            <ListItem>
-              <b>Currencies:</b>{' '}
-              {Object.entries(currencies).map(([_, c]) => (
-                <span key={c.code}>{c.name} </span>
-              ))}
-            </ListItem>
-            <ListItem>
-              <b>Languages:</b>{' '}
-              {Object.entries(languages).map(([_, l]) => (
-                <span key={l}>{l} </span>
-              ))}
-            </ListItem>
+            {currencies ? (
+              <ListItem>
+                <b>Currencies:</b>{' '}
+                {Object.entries(currencies).map(([_, c]) => (
+                  <span key={c.code}>{c.name} </span>
+                ))}
+              </ListItem>
+            ) : null}
+            {languages ? (
+              <ListItem>
+                <b>Languages:</b>{' '}
+                {Object.entries(languages).map(([_, l]) => (
+                  <span key={l}>{l} </span>
+                ))}
+              </ListItem>
+            ) : null}
           </List>
         </ListGroup>
         <Meta>
